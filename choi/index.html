@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<title>Bloodflame Super League: bóng phủi Sài Gòn</title><meta name="description" content="Game bóng đá thẻ bài miễn phí trên trình duyệt. Chơi Cốt truyện hoặc rủ bạn vào Giải Tứ Hùng bốn đội."><meta property="og:type" content="website"><meta property="og:site_name" content="BFSL"><meta property="og:title" content="Bloodflame Super League: bóng phủi Sài Gòn"><meta property="og:description" content="Game bóng đá thẻ bài miễn phí trên trình duyệt. Chơi Cốt truyện hoặc rủ bạn vào Giải Tứ Hùng bốn đội."><meta property="og:image" content="https://bfsl.bloodflame.app/assets/img/og-choi.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><script>(function(){try{var q=new URLSearchParams(location.search),t=(q.get('tu')||'').toLowerCase();if(!/^[a-z0-9-]{1,24}$/.test(t)||localStorage.getItem('bfsl_tu'))return;localStorage.setItem('bfsl_tu',JSON.stringify({tu:t,ban:Math.max(0,parseInt(q.get('ban')||'0',10)||0),at:Date.now()}));}catch(e){}})();</script>
+		<style>
+html, body, #canvas {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	color: white;
+	background-color: black;
+	overflow: hidden;
+	touch-action: none;
+}
+
+#canvas {
+	display: block;
+}
+
+#canvas:focus {
+	outline: none;
+}
+
+#status, #status-splash, #status-progress {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+#status, #status-splash {
+	top: 0;
+	bottom: 0;
+}
+
+#status {
+	background-color: #242424;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+
+#status-splash {
+	max-height: 100%;
+	max-width: 100%;
+	margin: auto;
+}
+
+#status-splash.show-image--false {
+	display: none;
+}
+
+#status-splash.fullsize--true {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+
+#status-splash.use-filter--false {
+	image-rendering: pixelated;
+}
+
+#status-progress, #status-notice {
+	display: none;
+}
+
+#status-progress {
+	bottom: 10%;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#status-notice {
+	background-color: #5b3943;
+	border-radius: 0.5rem;
+	border: 1px solid #9b3943;
+	color: #e0e0e0;
+	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+	line-height: 1.3;
+	margin: 0 2rem;
+	overflow: hidden;
+	padding: 1rem;
+	text-align: center;
+	z-index: 1;
+}
+		</style>
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+<script>(function(){try{if(location.hostname!=='bfsl.bloodflame.app'||location.pathname.indexOf('/choi/')<0)return;var h=location.hash||'';if(/(^#|&)ve(&|$)/.test(h)){localStorage.setItem('bfsl_cu','1');if(h==='#ve'){history.replaceState(null,'',location.pathname+location.search);}return;}if(h.indexOf('bfsl=')>=0){localStorage.setItem('bfsl_cu','1');return;}if(navigator.standalone===true||(window.matchMedia&&(matchMedia('(display-mode: standalone)').matches||matchMedia('(display-mode: fullscreen)').matches)))return;if(localStorage.getItem('bfsl_cu')==='1')return;localStorage.setItem('bfsl_cu','1');if(localStorage.getItem('bfsl_cu')!=='1')return;location.replace('https://hieunhan5601-commits.github.io/bfsl/?ve=1');}catch(e){}})();</script><script>(function(){try{if(location.pathname.indexOf('/choi/')<0)return;var ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);if(!ios){var l=document.createElement('link');l.rel='manifest';l.href='../manifest.webmanifest';document.head.appendChild(l);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.bfslInstall=e;});window.addEventListener('appinstalled',function(){window.bfslInstall=null;window.bfslInstalled=1;});if('serviceWorker' in navigator&&window.isSecureContext){navigator.serviceWorker.register('../sw.js').catch(function(){});}}catch(e){}})();</script><script>(function(){try{var D=Object.getOwnPropertyDescriptor(window,'devicePixelRatio'),g=D&&D.get,o=window.devicePixelRatio||1,m=Math.min(screen.width,screen.height)<=600;window.__bfslCap=2;var n=localStorage.getItem('bfsl_net');if(n==='0'||n==='vua')window.__bfslCap=1.5;if(n==='thap')window.__bfslCap=1.25;Object.defineProperty(window,'devicePixelRatio',{configurable:true,get:function(){return Math.min(g?g.call(window):o,window.__bfslCap);}});}catch(e){}})();</script><script>(function(){try{if(navigator.standalone!==true||!/iPhone/.test(navigator.userAgent))return;var P=Window.prototype,dW=Object.getOwnPropertyDescriptor(P,'innerWidth')||Object.getOwnPropertyDescriptor(window,'innerWidth'),dH=Object.getOwnPropertyDescriptor(P,'innerHeight')||Object.getOwnPropertyDescriptor(window,'innerHeight');if(!dW||!dH||!dW.get||!dH.get)return;var full=function(){var a=Math.min(screen.width,screen.height),b=Math.max(screen.width,screen.height);return dW.get.call(window)>dH.get.call(window)?[b,a]:[a,b];};Object.defineProperty(window,'innerWidth',{configurable:true,get:function(){return full()[0];}});Object.defineProperty(window,'innerHeight',{configurable:true,get:function(){return full()[1];}});}catch(e){}})();</script><style>#canvas{position:fixed;left:0;top:0}</style><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="BFSL"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+	</head>
+	<body>
+		<canvas id="canvas">
+			Your browser does not support the canvas tag.
+		</canvas>
+
+		<noscript>
+			Your browser does not support JavaScript.
+		</noscript>
+
+		<div id="status">
+			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
+			<progress id="status-progress"></progress>
+			<div id="status-notice"></div>
+		</div>
+
+		<script src="index.js"></script>
+		<script>
+(function(){var P='index.v1012.pck',C='https://bfsl-goi.bloodflame.workers.dev/';if(location.hostname!=='bfsl.bloodflame.app'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1')return;var f=window.fetch.bind(window);window.fetch=function(u,o){if(u!==P)return f(u,o);return f(P,o).then(function(r){return r.ok?r:f(C+P,o);},function(){return f(C+P,o);});};})();
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"mainPack":"index.v1012.pck","fileSizes":{"index.v1012.pck":100525252,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_THREADS_ENABLED = false;
+const engine = new Engine(GODOT_CONFIG);
+
+(function () {
+	const statusOverlay = document.getElementById('status');
+	const statusProgress = document.getElementById('status-progress');
+	const statusNotice = document.getElementById('status-notice');
+
+	let initializing = true;
+	let statusMode = '';
+
+	function setStatusMode(mode) {
+		if (statusMode === mode || !initializing) {
+			return;
+		}
+		if (mode === 'hidden') {
+			statusOverlay.remove();
+			initializing = false;
+			return;
+		}
+		statusOverlay.style.visibility = 'visible';
+		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
+		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
+		statusMode = mode;
+	}
+
+	function setStatusNotice(text) {
+		while (statusNotice.lastChild) {
+			statusNotice.removeChild(statusNotice.lastChild);
+		}
+		const lines = text.split('\n');
+		lines.forEach((line) => {
+			statusNotice.appendChild(document.createTextNode(line));
+			statusNotice.appendChild(document.createElement('br'));
+		});
+	}
+
+	function displayFailureNotice(err) {
+		console.error(err);
+		if (err instanceof Error) {
+			setStatusNotice(err.message);
+		} else if (typeof err === 'string') {
+			setStatusNotice(err);
+		} else {
+			setStatusNotice('An unknown error occurred.');
+		}
+		setStatusMode('notice');
+		initializing = false;
+	}
+
+	const missing = Engine.getMissingFeatures({
+		threads: GODOT_THREADS_ENABLED,
+	});
+
+	if (missing.length !== 0) {
+		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
+			let serviceWorkerRegistrationPromise;
+			try {
+				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
+			} catch (err) {
+				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+			}
+			// There's a chance that installing the service worker would fix the issue
+			Promise.race([
+				serviceWorkerRegistrationPromise.then((registration) => {
+					if (registration != null) {
+						return Promise.reject(new Error('Service worker already exists.'));
+					}
+					return registration;
+				}).then(() => engine.installServiceWorker()),
+				// For some reason, `getRegistration()` can stall
+				new Promise((resolve) => {
+					setTimeout(() => resolve(), 2000);
+				}),
+			]).then(() => {
+				// Reload if there was no error.
+				window.location.reload();
+			}).catch((err) => {
+				console.error('Error while registering service worker:', err);
+			});
+		} else {
+			// Display the message as usual
+			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
+			displayFailureNotice(missingMsg + missing.join('\n'));
+		}
+	} else {
+		setStatusMode('progress');
+		engine.startGame({
+			'onProgress': function (current, total) {
+				if (current > 0 && total > 0) {
+					statusProgress.value = current;
+					statusProgress.max = total;
+				} else {
+					statusProgress.removeAttribute('value');
+					statusProgress.removeAttribute('max');
+				}
+			},
+		}).then(() => {
+			setStatusMode('hidden');
+		}, displayFailureNotice);
+	}
+}());
+		</script>
+	</body>
+</html>
+
